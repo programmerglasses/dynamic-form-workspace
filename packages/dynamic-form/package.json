@@ -1,0 +1,16 @@
+{
+  "name": "dynamic-form",
+  "version": "0.0.0",
+  "description": "Dynamic form implementation based on pure web components",
+  "private": false,
+  "main": "index.js",
+  "author": "Arturas Ochonko",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "release": "npm run build && npm publish"
+  },
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  }
+}
