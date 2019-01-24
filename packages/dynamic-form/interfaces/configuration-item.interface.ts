@@ -1,5 +1,7 @@
+import { ComponentType } from '../enums';
+
 export interface ConfigurationItem {
-  render: string;
+  render: ComponentType;
   attributes?: any;
   events?: any;
   settings?: any;
