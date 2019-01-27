@@ -4,7 +4,7 @@ export class AttributeCopierService {
   private readonly sourceElement: Element;
   private readonly destinationElement: Element;
 
-  constructor(private options: AttributeCopierOptions) {
+  constructor(private readonly options: AttributeCopierOptions) {
     this.sourceElement = this.options.sourceElement;
     this.destinationElement = <Element> this.options.destinationElement.cloneNode(true);
   }
