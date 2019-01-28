@@ -8,3 +8,4 @@ export * from './event-type.interface';
 export * from './parsable.interface';
 export * from './render-priority-provider-options.interface';
 export * from './render-priority-sorter-options.interface';
+export * from './settings-type.interface';
