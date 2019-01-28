@@ -9,11 +9,11 @@ export class RenderPrioritySorterService {
     ];
   }
 
-  compareAscending(firstConfigurationItem: ConfigurationItem, secondConfigurationItem: ConfigurationItem) {
-    return firstConfigurationItem.settings.renderPriority - secondConfigurationItem.settings.renderPriority;
-  }
-
   sort(compareFunction = this.compareAscending) {
     return this.configuration.sort(compareFunction);
+  }
+
+  private compareAscending(firstConfigurationItem: ConfigurationItem, secondConfigurationItem: ConfigurationItem) {
+    return firstConfigurationItem.settings.renderPriority - secondConfigurationItem.settings.renderPriority;
   }
 }

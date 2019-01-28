@@ -11,10 +11,6 @@ export class AttributeParserService implements Parsable {
     this.destinationElement = <Element> options.destinationElement.cloneNode(true);
   }
 
-  private addAttribute(sourceElement: Element, name: string, value: string) {
-    sourceElement.setAttribute(name, value);
-  }
-
   parse(): Element {
     for (const attribute in this.attributes) {
       if (this.attributes.hasOwnProperty(attribute)) {
@@ -23,5 +19,9 @@ export class AttributeParserService implements Parsable {
     }
 
     return this.destinationElement;
+  }
+
+  private addAttribute(sourceElement: Element, name: string, value: string) {
+    sourceElement.setAttribute(name, value);
   }
 }

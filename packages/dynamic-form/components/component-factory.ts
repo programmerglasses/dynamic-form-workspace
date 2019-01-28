@@ -5,11 +5,11 @@ export class ComponentFactory {
     return this.createComponent(componentType);
   }
 
-  createButton() {
+  private createButton() {
     return document.createElement(ComponentType.BUTTON_WRAPPER);
   }
 
-  createComponent(componentType: ComponentType) {
+  private createComponent(componentType: ComponentType) {
     switch (componentType) {
       case ComponentType.BUTTON_WRAPPER:
         return this.createButton();
@@ -20,7 +20,7 @@ export class ComponentFactory {
     }
   }
 
-  createInput() {
+  private createInput() {
     return document.createElement(ComponentType.INPUT_WRAPPER);
   }
 }

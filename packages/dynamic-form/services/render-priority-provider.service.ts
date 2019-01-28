@@ -12,7 +12,16 @@ export class RenderPriorityProviderService {
     this.settingsInspector = new SettingsInspector();
   }
 
-  findHighestRenderPriority() {
+  verifyConfigurationItems() {
+    const highestRenderPriority = this.findHighestRenderPriority();
+
+    return this.configuration.map((configurationItem: ConfigurationItem, index: number) => {
+      const configurationItemPosition = ++index;
+      return this.verifyRenderPriority(configurationItem, configurationItemPosition, highestRenderPriority);
+    });
+  }
+
+  private findHighestRenderPriority() {
     const configurationItemRenderPriorities: number[] = [];
 
     this.configuration.forEach((configurationItem: ConfigurationItem) => {
@@ -27,7 +36,7 @@ export class RenderPriorityProviderService {
     return Math.max.apply(this, configurationItemRenderPriorities);
   }
 
-  provideRenderPriority(configurationItem: ConfigurationItem, configurationItemPosition: number, highestRenderPriority: number) {
+  private provideRenderPriority(configurationItem: ConfigurationItem, configurationItemPosition: number, highestRenderPriority: number) {
     if (!this.settingsInspector.hasSettingsProperty(configurationItem)) {
       configurationItem.settings = {};
     }
@@ -37,16 +46,7 @@ export class RenderPriorityProviderService {
     }
   }
 
-  verifyConfigurationItems() {
-    const highestRenderPriority = this.findHighestRenderPriority();
-
-    return this.configuration.map((configurationItem: ConfigurationItem, index: number) => {
-      const configurationItemPosition = ++index;
-      return this.verifyRenderPriority(configurationItem, configurationItemPosition, highestRenderPriority);
-    });
-  }
-
-  verifyRenderPriority(configurationItem: ConfigurationItem, configurationItemPosition: number, highestRenderPriority: number) {
+  private verifyRenderPriority(configurationItem: ConfigurationItem, configurationItemPosition: number, highestRenderPriority: number) {
     if (!this.settingsInspector.hasRenderPriorityProperty(configurationItem)) {
       this.provideRenderPriority(configurationItem, configurationItemPosition, highestRenderPriority);
     }

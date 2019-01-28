@@ -19,34 +19,6 @@ export class ConfigurationParserService implements Parsable {
     this.destinationElement = <Element> options.destinationElement.cloneNode(true);
   }
 
-  getConfigurationItems(renderType: string) {
-    return this.configuration
-      .filter((configurationItem: ConfigurationItem) => configurationItem.render === renderType);
-  }
-
-  getSortedConfigurationByRenderPriority() {
-    const buttonRenderPriorityProviderService = new RenderPriorityProviderService({
-      configuration: this.getConfigurationItems(ComponentType.BUTTON_WRAPPER)
-    });
-
-    const formControlRenderPriorityProviderService = new RenderPriorityProviderService({
-      configuration: this.getConfigurationItems(ComponentType.INPUT_WRAPPER)
-    });
-
-    const buttonRenderPrioritySorterService = new RenderPrioritySorterService({
-      configuration: buttonRenderPriorityProviderService.verifyConfigurationItems()
-    });
-
-    const formControlRenderPrioritySorterService = new RenderPrioritySorterService({
-      configuration: formControlRenderPriorityProviderService.verifyConfigurationItems()
-    });
-
-    const sortedButtonConfigurationItems = buttonRenderPrioritySorterService.sort();
-    const sortedFormControlConfigurationItems = formControlRenderPrioritySorterService.sort();
-
-    return sortedFormControlConfigurationItems.concat(sortedButtonConfigurationItems);
-  }
-
   parse(): Element {
     const sortedConfigurationByRenderPriority = this.getSortedConfigurationByRenderPriority();
 
@@ -76,5 +48,33 @@ export class ConfigurationParserService implements Parsable {
     });
 
     return this.destinationElement;
+  }
+
+  private getConfigurationItems(renderType: string) {
+    return this.configuration
+      .filter((configurationItem: ConfigurationItem) => configurationItem.render === renderType);
+  }
+
+  private getSortedConfigurationByRenderPriority() {
+    const buttonRenderPriorityProviderService = new RenderPriorityProviderService({
+      configuration: this.getConfigurationItems(ComponentType.BUTTON_WRAPPER)
+    });
+
+    const formControlRenderPriorityProviderService = new RenderPriorityProviderService({
+      configuration: this.getConfigurationItems(ComponentType.INPUT_WRAPPER)
+    });
+
+    const buttonRenderPrioritySorterService = new RenderPrioritySorterService({
+      configuration: buttonRenderPriorityProviderService.verifyConfigurationItems()
+    });
+
+    const formControlRenderPrioritySorterService = new RenderPrioritySorterService({
+      configuration: formControlRenderPriorityProviderService.verifyConfigurationItems()
+    });
+
+    const sortedButtonConfigurationItems = buttonRenderPrioritySorterService.sort();
+    const sortedFormControlConfigurationItems = formControlRenderPrioritySorterService.sort();
+
+    return sortedFormControlConfigurationItems.concat(sortedButtonConfigurationItems);
   }
 }

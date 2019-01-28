@@ -27,7 +27,7 @@ export class FormWrapperComponent extends HTMLElement {
     this.createFormFromConfiguration();
   }
 
-  createFormFromConfiguration() {
+  private createFormFromConfiguration() {
     const configuration = this.configurationService.getConfiguration();
 
     if (configuration) {
