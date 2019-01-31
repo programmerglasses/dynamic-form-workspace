@@ -5,7 +5,7 @@ import { SettingsType } from './settings-type.interface';
 
 export interface ConfigurationItem {
   render: ComponentType;
-  attributes?: AttributeType;
-  events?: EventType;
-  settings?: SettingsType;
+  attributes: AttributeType;
+  events: EventType;
+  settings: SettingsType;
 }
