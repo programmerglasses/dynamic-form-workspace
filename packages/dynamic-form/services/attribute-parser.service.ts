@@ -1,7 +1,7 @@
-import { AttributeParserOptions, Parsable } from '../interfaces';
+import { AttributeParserOptions, AttributeType, Parsable } from '../interfaces';
 
 export class AttributeParserService implements Parsable {
-  private readonly attributes: any;
+  private readonly attributes: AttributeType;
   private readonly destinationElement: Element;
 
   constructor(private readonly options: AttributeParserOptions) {

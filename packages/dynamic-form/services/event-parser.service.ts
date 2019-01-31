@@ -1,7 +1,7 @@
-import { EventParserOptions, Parsable } from '../interfaces';
+import { EventParserOptions, EventType, Parsable } from '../interfaces';
 
 export class EventParserService implements Parsable {
-  private readonly events: any;
+  private readonly events: EventType;
   private readonly destinationElement: Element;
 
   constructor(private readonly options: EventParserOptions) {

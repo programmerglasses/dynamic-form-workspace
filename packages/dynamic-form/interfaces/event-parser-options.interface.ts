@@ -1,4 +1,6 @@
+import { EventType } from './event-type.interface';
+
 export interface EventParserOptions {
-  events: any;
+  events: EventType;
   destinationElement: Element;
 }
