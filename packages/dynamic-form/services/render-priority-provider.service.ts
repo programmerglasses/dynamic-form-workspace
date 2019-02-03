@@ -37,14 +37,16 @@ export class RenderPriorityProviderService {
   }
 
   private provideRenderPriority(configurationItem: ConfigurationItem, configurationItemPosition: number, highestRenderPriority: number) {
+    const renderPriority = highestRenderPriority + configurationItemPosition;
+
     if (!this.settingsInspector.hasSettingsProperty(configurationItem)) {
       configurationItem.settings = {
-        renderPriority: highestRenderPriority + configurationItemPosition
+        renderPriority
       };
     }
 
     if (!this.settingsInspector.hasRenderPriorityProperty(configurationItem)) {
-      configurationItem.settings.renderPriority = highestRenderPriority + configurationItemPosition;
+      configurationItem.settings.renderPriority = renderPriority;
     }
   }
 
