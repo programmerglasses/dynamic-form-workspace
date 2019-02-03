@@ -13,11 +13,17 @@ export class ComponentFactory {
     switch (componentType) {
       case ComponentType.BUTTON_WRAPPER:
         return this.createButton();
+      case ComponentType.FORM_WRAPPER:
+        return this.createForm();
       case ComponentType.INPUT_WRAPPER:
         return this.createInput();
       default:
         throw new Error('Unexpected component type.');
     }
+  }
+
+  private createForm() {
+    return document.createElement(ComponentType.FORM_WRAPPER);
   }
 
   private createInput() {
